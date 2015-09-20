@@ -23,6 +23,7 @@
     "cordova": "^4.3.0",
     "grunt-cli": "^0.1.13",
     "node-sass": "^2.0.1",
+    "parse": "^1.6.3",
     "promise": "^6.1.0",
     "promise.coffee": "^1.0.6",
     "react": "^0.12.2"

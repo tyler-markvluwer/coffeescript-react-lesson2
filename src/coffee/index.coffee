@@ -1,6 +1,14 @@
 React = require('react') # no ./ prefix
+Parse = require('parse')
 TodoList = require('./todoList')
 TodoListView = require('./todoListView')
+
+# import the Parse api keys. Kept in separate files to keep away from public github
+key1 = require('./key1')
+key2 = require('./key2')
+
+# Parse imported in index.html
+Parse.initialize(key1, key2);
 
 todoList = new TodoList('my_list')
 
