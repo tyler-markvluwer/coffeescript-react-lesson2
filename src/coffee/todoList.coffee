@@ -1,7 +1,11 @@
 EventEmitter = require('events').EventEmitter # used to tell UI when to update
+print = require('./utils').print
 
 class TodoList extends EventEmitter
-	constructor: (@list_name) ->
+	constructor: (@list_name, @list_items) ->
+		print "list_items: "
+		print @list_items
+		
 		@list_items = [] #contains strings
 
 	###
