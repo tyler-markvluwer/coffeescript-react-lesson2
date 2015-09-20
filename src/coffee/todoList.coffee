@@ -10,17 +10,18 @@ class TodoList extends EventEmitter
         if typeof @list_items is "undefined"
             @list_items = [] #contains strings
 
-        @parseTodo = new ParseTodo()
         @parseQuery = new Parse.Query(ParseTodo)
         
         # Get remote todos
         # Asyncronous!
-        @parseQuery.find( # retrieves only first column...because there is only one
+        @parseQuery.first( # retrieves only first column...because there is only one
             success: (result) =>
-                print result
+                if typeof(result) == 'undefined' # first time ever created
+                    @parseTodo = new ParseTodo() # create new ParseTodo
+                else
+                    @parseTodo = result # use existing cloud ParseTodo
 
-                for parseObject in result
-                    parse_todos = parseObject.get('todos') # 'todos' is name of column in Parse
+                    parse_todos = result.get('todos') # 'todos' is name of column in Parse
                     print "retrieved todos"
                     @list_items = @list_items.concat parse_todos
                     @emit 'change'
